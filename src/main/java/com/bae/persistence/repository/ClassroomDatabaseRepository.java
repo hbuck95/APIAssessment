@@ -51,8 +51,7 @@ public class ClassroomDatabaseRepository implements ClassroomRepository {
 	}
 
 	public String getClassroom(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return json.getJSONForObject((Classroom) entityManager.find(Classroom.class, id));
 	}
 
 }

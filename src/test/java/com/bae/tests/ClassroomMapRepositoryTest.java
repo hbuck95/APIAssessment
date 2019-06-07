@@ -65,4 +65,13 @@ public class ClassroomMapRepositoryTest {
 		assertEquals("Joe Bloggs", cmr.getClassroomMap().get(1).getTrainees().get(0).getName());
 	}
 
+	@Test
+	public void getClassroomTest() {
+		cmr.getClassroomMap().put(1, classroomA);
+		cmr.getClassroomMap().put(2, classroomB);
+		Classroom foundClass = json.getObjectForJSON(cmr.getClassroom(2), Classroom.class);
+		assertEquals("Chester Gardner", foundClass.getTrainer());
+		assertEquals("Joe Bloggs", foundClass.getTrainees().get(0).getName());
+	}
+
 }

@@ -16,7 +16,7 @@ import com.bae.util.JSONUtil;
 
 @Alternative
 public class ClassroomMapRepository implements ClassroomRepository {
-	private Map<Integer, Classroom> classroomMap = new HashMap<Integer, Classroom>();
+	private Map<Integer, Classroom> classroomMap = new HashMap<>();
 
 	private JSONUtil json = new JSONUtil(); // New keyword for testing
 
@@ -38,8 +38,9 @@ public class ClassroomMapRepository implements ClassroomRepository {
 	}
 
 	public String getClassroom(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!classroomMap.containsKey(id))
+			return Constants.GET_CLASSROOM_FAIL;
+		return json.getJSONForObject(classroomMap.get(id));
 	}
 
 	public Map<Integer, Classroom> getClassroomMap() {
