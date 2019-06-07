@@ -2,6 +2,7 @@ package com.bae.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -40,8 +41,11 @@ public class ClassroomController {
 
 	}
 
-	public String getClassroom(int id) {
-		return null;
+	@Path("/getClassroom/{id}")
+	@GET
+	@Produces({ "application/json" })
+	public String getClassroom(@PathParam("id") int id) {
+		return classroomService.getClassroom(id);
 
 	}
 
