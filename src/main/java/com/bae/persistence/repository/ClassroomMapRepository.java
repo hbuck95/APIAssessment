@@ -1,0 +1,48 @@
+package com.bae.persistence.repository;
+
+import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.enterprise.inject.Alternative;
+import javax.transaction.Transactional;
+
+import com.bae.persistence.domain.Classroom;
+import com.bae.util.Constants;
+import com.bae.util.JSONUtil;
+
+@Transactional(SUPPORTS)
+
+@Alternative
+public class ClassroomMapRepository implements ClassroomRepository {
+	private Map<Integer, Classroom> classroomMap = new HashMap<Integer, Classroom>();
+
+	private JSONUtil json = new JSONUtil(); // New keyword for testing
+
+	public String addClassroom(String classroom) {
+		Classroom newClassroom = json.getObjectForJSON(classroom, Classroom.class);
+		classroomMap.put(newClassroom.getId(), newClassroom);
+		return Constants.ADD_CLASSROOM_SUCCESS;
+	}
+
+	public String deleteClassroom(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String updateClassroom(int id, String classroom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getClassroom(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Map<Integer, Classroom> getClassroomMap() {
+		return classroomMap;
+	}
+
+}
