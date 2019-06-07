@@ -1,5 +1,9 @@
 package com.bae.persistence.repository;
 
+import static com.bae.util.Constants.ADD_CLASSROOM_SUCCESS;
+import static com.bae.util.Constants.GET_CLASSROOM_FAIL;
+import static com.bae.util.Constants.REMOVE_CLASSROOM_SUCCESS;
+import static com.bae.util.Constants.UPDATE_CLASSROOM_SUCCESS;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.HashMap;
@@ -9,7 +13,6 @@ import javax.enterprise.inject.Alternative;
 import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.Classroom;
-import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -22,23 +25,23 @@ public class ClassroomMapRepository implements ClassroomRepository {
 	public String addClassroom(String classroom) {
 		Classroom newClassroom = json.getObjectForJSON(classroom, Classroom.class);
 		classroomMap.put(newClassroom.getId(), newClassroom);
-		return Constants.ADD_CLASSROOM_SUCCESS;
+		return ADD_CLASSROOM_SUCCESS;
 	}
 
 	public String deleteClassroom(int id) {
 		classroomMap.remove(id);
-		return Constants.REMOVE_CLASSROOM_SUCCESS;
+		return REMOVE_CLASSROOM_SUCCESS;
 	}
 
 	public String updateClassroom(int id, String classroom) {
 		Classroom updatedClassroom = json.getObjectForJSON(classroom, Classroom.class);
 		classroomMap.put(id, updatedClassroom);
-		return Constants.UPDATE_CLASSROOM_SUCCESS;
+		return UPDATE_CLASSROOM_SUCCESS;
 	}
 
 	public String getClassroom(int id) {
 		if (!classroomMap.containsKey(id))
-			return Constants.GET_CLASSROOM_FAIL;
+			return GET_CLASSROOM_FAIL;
 		return json.getJSONForObject(classroomMap.get(id));
 	}
 

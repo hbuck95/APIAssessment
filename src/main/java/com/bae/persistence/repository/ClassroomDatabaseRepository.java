@@ -1,5 +1,8 @@
 package com.bae.persistence.repository;
 
+import static com.bae.util.Constants.ADD_CLASSROOM_SUCCESS;
+import static com.bae.util.Constants.REMOVE_CLASSROOM_SUCCESS;
+import static com.bae.util.Constants.UPDATE_CLASSROOM_SUCCESS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
@@ -11,7 +14,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.Classroom;
-import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -28,14 +30,14 @@ public class ClassroomDatabaseRepository implements ClassroomRepository {
 	public String addClassroom(String classroom) {
 		Classroom newClassroom = json.getObjectForJSON(classroom, Classroom.class);
 		entityManager.persist(newClassroom);
-		return Constants.ADD_CLASSROOM_SUCCESS;
+		return ADD_CLASSROOM_SUCCESS;
 	}
 
 	@Transactional(REQUIRED)
 	public String deleteClassroom(int id) {
 		Classroom classToDelete = entityManager.find(Classroom.class, id);
 		entityManager.remove(classToDelete);
-		return Constants.REMOVE_CLASSROOM_SUCCESS;
+		return REMOVE_CLASSROOM_SUCCESS;
 	}
 
 	@Transactional(REQUIRED)
@@ -47,7 +49,7 @@ public class ClassroomDatabaseRepository implements ClassroomRepository {
 
 		query.executeUpdate();
 
-		return Constants.UPDATE_CLASSROOM_SUCCESS;
+		return UPDATE_CLASSROOM_SUCCESS;
 	}
 
 	public String getClassroom(int id) {
