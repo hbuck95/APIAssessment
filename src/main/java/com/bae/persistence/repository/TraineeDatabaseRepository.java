@@ -1,5 +1,6 @@
 package com.bae.persistence.repository;
 
+import static com.bae.util.Constants.ADD_TRAINEE_SUCCESS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
@@ -10,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.Trainee;
-import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -33,7 +33,7 @@ public class TraineeDatabaseRepository implements TraineeRepository {
 	public String addTrainee(String trainee) {
 		Trainee newTrainee = json.getObjectForJSON(trainee, Trainee.class);
 		entityManager.persist(newTrainee);
-		return Constants.ADD_TRAINEE_SUCCESS;
+		return ADD_TRAINEE_SUCCESS;
 	}
 
 }

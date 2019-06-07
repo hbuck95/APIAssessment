@@ -1,5 +1,6 @@
 package com.bae.persistence.repository;
 
+import static com.bae.util.Constants.ADD_TRAINEE_SUCCESS;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class TraineeMapRepository implements TraineeRepository {
 	public String addTrainee(String trainee) {
 		Trainee newTrainee = json.getObjectForJSON(trainee, Trainee.class);
 		traineeMap.put(newTrainee.getId(), newTrainee);
-		return Constants.ADD_TRAINEE_SUCCESS;
+		return ADD_TRAINEE_SUCCESS;
 	}
 
 }

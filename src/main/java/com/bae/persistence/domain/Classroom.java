@@ -26,7 +26,6 @@ public class Classroom {
 
 	public Classroom() {
 		trainees = new ArrayList<>();
-
 	}
 
 	public Classroom(int id, String trainer, List<Trainee> trainees) {
