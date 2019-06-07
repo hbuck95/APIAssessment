@@ -1,14 +1,15 @@
 package com.bae.persistence.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,16 +17,17 @@ public class Classroom {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "classroomID")
 	private int classroomID;
 
-	@Column(length = 40)
+	@Column(name = "trainer")
 	private String trainer;
 
-	@OneToMany(mappedBy = "classroom", fetch = FetchType.EAGER)
+	@JoinColumn(name = "classroom", referencedColumnName = "classroomID")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Trainee> trainees;
 
 	public Classroom() {
-		trainees = new ArrayList<>();
 	}
 
 	public Classroom(int id, String trainer, List<Trainee> trainees) {

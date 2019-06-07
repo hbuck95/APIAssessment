@@ -11,12 +11,13 @@ public class Trainee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "traineeID")
 	private int traineeID;
 
-	@Column(length = 40)
+	@Column(name = "traineeName")
 	private String traineeName;
 
-	@Column(length = 1)
+	@Column(name = "classroom")
 	private int classroom;
 
 	public Trainee() {
