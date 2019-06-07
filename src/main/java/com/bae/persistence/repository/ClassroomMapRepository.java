@@ -32,8 +32,9 @@ public class ClassroomMapRepository implements ClassroomRepository {
 	}
 
 	public String updateClassroom(int id, String classroom) {
-		// TODO Auto-generated method stub
-		return null;
+		Classroom updatedClassroom = json.getObjectForJSON(classroom, Classroom.class);
+		classroomMap.put(id, updatedClassroom);
+		return Constants.UPDATE_CLASSROOM_SUCCESS;
 	}
 
 	public String getClassroom(int id) {

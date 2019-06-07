@@ -16,6 +16,7 @@ public class ClassroomMapRepositoryTest {
 	private ClassroomMapRepository cmr;
 	private JSONUtil json;
 	private Classroom classroomA;
+	private Classroom classroomB;
 	private Trainee traineeA;
 	private String classroomAJson;
 	private String traineeAJson;
@@ -25,8 +26,10 @@ public class ClassroomMapRepositoryTest {
 		cmr = new ClassroomMapRepository();
 		json = new JSONUtil();
 		classroomA = new Classroom(1, "Matt Hunt", new ArrayList<Trainee>());
+		classroomB = new Classroom(1, "Chester Gardner", new ArrayList<Trainee>());
 		traineeA = new Trainee(1, "Joe Bloggs", 1);
 		classroomA.getTrainees().add(traineeA);
+		classroomB.getTrainees().add(traineeA);
 		classroomAJson = "{\"classroomID\":1,\"trainer\":\"Matt Hunt\",\"trainees\":[{\"traineeID\":1,\"traineeName\":\"Joe Bloggs\",\"classroom\":1}]}";
 	}
 
@@ -51,6 +54,15 @@ public class ClassroomMapRepositoryTest {
 		cmr.deleteClassroom(1);
 		assertEquals(0, cmr.getClassroomMap().size());
 		assertEquals("{}", cmr.getClassroomMap().toString());
+	}
+
+	@Test
+	public void updateClassroomTest() {
+		cmr.getClassroomMap().put(1, classroomA);
+		assertEquals(1, cmr.getClassroomMap().size()); // Check classroom was added
+		cmr.updateClassroom(1, json.getJSONForObject(classroomB));
+		assertEquals("Chester Gardner", cmr.getClassroomMap().get(1).getTrainer());
+		assertEquals("Joe Bloggs", cmr.getClassroomMap().get(1).getTrainees().get(0).getName());
 	}
 
 }
