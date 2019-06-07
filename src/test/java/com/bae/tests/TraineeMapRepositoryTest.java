@@ -32,4 +32,11 @@ public class TraineeMapRepositoryTest {
 		assertEquals(2, trainee.getId());
 	}
 
+	@Test
+	public void addTrainee() {
+		String traineeJson = json.getJSONForObject(traineeA);
+		tmr.addTrainee(traineeJson);
+		assertEquals(1, tmr.getTraineeMap().size());
+	}
+
 }

@@ -26,8 +26,15 @@ public class TraineeMapRepository implements TraineeRepository {
 	@Override
 	public String getTrainee(int id) {
 		if (!traineeMap.containsKey(id))
-			return Constants.GET_CLASSROOM_FAIL;
+			return Constants.GET_TRAINEE_FAIL;
 		return json.getJSONForObject(traineeMap.get(id));
+	}
+
+	@Override
+	public String addTrainee(String trainee) {
+		Trainee newTrainee = json.getObjectForJSON(trainee, Trainee.class);
+		traineeMap.put(newTrainee.getId(), newTrainee);
+		return Constants.ADD_TRAINEE_SUCCESS;
 	}
 
 }
