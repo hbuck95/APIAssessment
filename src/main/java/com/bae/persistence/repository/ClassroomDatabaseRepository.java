@@ -31,8 +31,9 @@ public class ClassroomDatabaseRepository implements ClassroomRepository {
 	}
 
 	public String deleteClassroom(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Classroom classToDelete = entityManager.find(Classroom.class, id);
+		entityManager.remove(classToDelete);
+		return Constants.REMOVE_CLASSROOM_SUCCESS;
 	}
 
 	public String updateClassroom(int id, String classroom) {

@@ -44,4 +44,13 @@ public class ClassroomMapRepositoryTest {
 		assertEquals("Matt Hunt", cmr.getClassroomMap().get(1).getTrainer());
 	}
 
+	@Test
+	public void deleteClassroomTest() {
+		cmr.getClassroomMap().put(1, classroomA);
+		assertEquals(1, cmr.getClassroomMap().size()); // Check classroom was added
+		cmr.deleteClassroom(1);
+		assertEquals(0, cmr.getClassroomMap().size());
+		assertEquals("{}", cmr.getClassroomMap().toString());
+	}
+
 }

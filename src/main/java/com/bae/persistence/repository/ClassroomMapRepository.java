@@ -27,8 +27,8 @@ public class ClassroomMapRepository implements ClassroomRepository {
 	}
 
 	public String deleteClassroom(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		classroomMap.remove(id);
+		return Constants.REMOVE_CLASSROOM_SUCCESS;
 	}
 
 	public String updateClassroom(int id, String classroom) {
