@@ -11,10 +11,10 @@ public class Trainee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int traineeID;
 
 	@Column(length = 40)
-	private String name;
+	private String traineeName;
 
 	@Column(length = 1)
 	private int classroom;
@@ -25,25 +25,25 @@ public class Trainee {
 
 	public Trainee(int id, String name, int classroom) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.traineeID = id;
+		this.traineeName = name;
 		this.setClassroom(classroom);
 	}
 
 	public int getId() {
-		return id;
+		return traineeID;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.traineeID = id;
 	}
 
 	public String getName() {
-		return name;
+		return traineeName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.traineeName = name;
 	}
 
 	public int getClassroom() {
