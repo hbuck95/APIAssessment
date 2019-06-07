@@ -1,5 +1,6 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import javax.enterprise.inject.Default;
@@ -28,6 +29,7 @@ public class TraineeDatabaseRepository implements TraineeRepository {
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String addTrainee(String trainee) {
 		Trainee newTrainee = json.getObjectForJSON(trainee, Trainee.class);
 		entityManager.persist(newTrainee);
