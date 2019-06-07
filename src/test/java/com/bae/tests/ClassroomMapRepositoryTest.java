@@ -19,7 +19,6 @@ public class ClassroomMapRepositoryTest {
 	private Classroom classroomB;
 	private Trainee traineeA;
 	private String classroomAJson;
-	private String traineeAJson;
 
 	@Before
 	public void setup() {
