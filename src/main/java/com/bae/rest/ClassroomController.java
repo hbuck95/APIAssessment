@@ -20,7 +20,7 @@ public class ClassroomController {
 	@Path("/addClassroom")
 	@POST
 	@Produces({ "application/json" })
-	public String addANewClassroom(String classroom) {
+	public String addClassroom(String classroom) {
 		return classroomService.addClassroom(classroom);
 
 	}
@@ -41,7 +41,7 @@ public class ClassroomController {
 
 	}
 
-	@Path("/getClassroom/{id}")
+	@Path("/getAClassroom/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getClassroom(@PathParam("id") int id) {
