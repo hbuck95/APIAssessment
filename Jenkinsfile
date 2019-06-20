@@ -35,7 +35,7 @@ pipeline{
                 }
 		stage('--deploy--'){
                         steps{
-				sh "sudo cp -r /var/lib/jenkins/workspace/SoloProjectPipe/target/BAESoloProject.war /home/h_a_buck_1995/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp -r /var/lib/jenkins/workspace/SoloProjectPipe/target/APIAssessment.war /home/h_a_buck_1995/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
