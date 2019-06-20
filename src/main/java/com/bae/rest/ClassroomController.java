@@ -41,7 +41,7 @@ public class ClassroomController {
 
 	}
 
-	@Path("/getClassroom/{id}")
+	@Path("/getAClass/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getClassroom(@PathParam("id") int id) {
